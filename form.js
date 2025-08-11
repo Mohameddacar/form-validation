@@ -57,10 +57,20 @@ form.addEventListener("submit", (event) => {
     event.preventDefault();
     checkEmpty([username,email,password,comfirmPassword]);
     checkEmail(email);
-    checkPass(password,6,12);
-    checkPass(comfirmPassword,6,12);
+    checkPass(password,6,6);
+    checkPass(comfirmPassword,6,6);
 
+    let allValid = true;
+    document.querySelectorAll(".form-control").forEach(control => {
+        if (!control.classList.contains("success")) {
+            allValid = false;
+        }
+    });
+
+    // If all valid → redirect to dashboard page
+    if (allValid) {
+        window.location.href = "dashboard.html";
+    }
 });
-
 
 
